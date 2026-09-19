@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>G-R Mahdi | UI/UX & Graphics Designer</title>
+  <style>
+    :root {
+      --bg: #061016;
+      --panel: #0b1b23;
+      --panel-2: #102832;
+      --text: #f4f7f8;
+      --muted: #a7b8bf;
+      --accent: #00d084;
+      --accent-2: #14b8a6;
+      --border: rgba(255,255,255,.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top right, #12333a, var(--bg) 45%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, 92%); margin: auto; }
+
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(6,16,22,.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      min-height: 72px; gap: 20px;
+    }
+    .logo { font-size: 1.4rem; font-weight: 800; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { color: var(--muted); font-size: .95rem; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .btn {
+      display: inline-block; border: 1px solid var(--accent);
+      padding: 11px 18px; border-radius: 999px;
+      background: var(--accent); color: #03120d;
+      font-weight: 700; transition: .25s;
+    }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,208,132,.2); }
+    .btn.secondary { background: transparent; color: var(--text); border-color: var(--border); }
+
+    .hero {
+      min-height: 650px; display: grid; place-items: center;
+      background: linear-gradient(90deg, rgba(6,16,22,.98), rgba(6,16,22,.48)),
+        url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=85") center/cover;
+    }
+    .hero-content { padding: 90px 0; max-width: 700px; }
+    .eyebrow { color: var(--accent); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+    h1 { font-size: clamp(3rem, 8vw, 6.2rem); line-height: .98; margin: 18px 0; }
+    h1 span { color: var(--accent); }
+    .hero p { color: var(--muted); max-width: 570px; font-size: 1.1rem; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .stats { display: flex; gap: 45px; margin-top: 42px; flex-wrap: wrap; }
+    .stat strong { display: block; font-size: 1.7rem; color: var(--accent); }
+    .stat small { color: var(--muted); }
+
+    section { padding: 90px 0; }
+    .section-title { margin-bottom: 35px; }
+    .section-title h2 { font-size: clamp(2rem, 4vw, 3rem); }
+    .section-title p { color: var(--muted); margin-top: 8px; }
+
+    .about-grid, .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .card {
+      background: linear-gradient(145deg, rgba(16,40,50,.95), rgba(8,24,31,.95));
+      border: 1px solid var(--border); border-radius: 22px; padding: 28px;
+    }
+    .card p { color: var(--muted); }
+    .skill-list { list-style: none; margin-top: 18px; }
+    .skill-list li { margin: 10px 0; color: #dce8eb; }
+    .skill-list li::before { content: "✓"; color: var(--accent); margin-right: 10px; }
+
+    .services, .portfolio { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .service h3 { margin: 12px 0 8px; }
+    .service .icon { font-size: 2rem; color: var(--accent); }
+    .service p { font-size: .94rem; }
+
+    .project { overflow: hidden; padding: 0; }
+    .project img { width: 100%; height: 180px; object-fit: cover; display: block; }
+    .project-content { padding: 20px; }
+    .project-content h3 { margin-bottom: 5px; }
+    .tag { color: var(--accent); font-size: .85rem; }
+
+    form { display: grid; gap: 14px; }
+    input, textarea {
+      width: 100%; border: 1px solid var(--border); border-radius: 12px;
+      padding: 14px; background: rgba(0,0,0,.22); color: white;
+      font: inherit;
+    }
+    textarea { min-height: 140px; resize: vertical; }
+    footer { border-top: 1px solid var(--border); padding: 28px 0; color: var(--muted); text-align: center; }
+
+    @media (max-width: 900px) {
+      .services, .portfolio { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 650px) {
+      .nav-links { display: none; }
+      .about-grid, .contact-grid, .services, .portfolio { grid-template-columns: 1fr; }
+      .hero { min-height: 600px; }
+      .stats { gap: 24px; }
+      section { padding: 60px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#home" class="logo">G-R <span>Mahdi</span></a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a class="btn" href="#contact">Hire Me →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow">Creative Designer</div>
+          <h1>G-R <span>Mahdi</span></h1>
+          <h2>UI/UX Designer & Graphics Designer</h2>
+          <p>
+            I create modern, clean and user-friendly digital experiences,
+            creative visuals and meaningful brand identities.
+          </p>
+          <div class="actions">
+            <a class="btn" href="#portfolio">View My Work →</a>
+            <a class="btn secondary" href="#contact">Contact Me</a>
+          </div>
+          <div class="stats">
+            <div class="stat"><strong>UI/UX</strong><small>Design</small></div>
+            <div class="stat"><strong>Graphic</strong><small>Design</small></div>
+            <div class="stat"><strong>Web</strong><small>Design</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>Turning Ideas Into <span style="color:var(--accent)">Visual Designs</span></h2>
+          <p>A simple introduction section for your personal portfolio.</p>
+        </div>
+        <div class="about-grid">
+          <div class="card">
+            <h3>About Me</h3>
+            <p style="margin-top:12px">
+              I am G-R Mahdi, a creative designer interested in UI/UX,
+              graphics, branding and digital content creation.
+            </p>
+          </div>
+          <div class="card">
+            <h3>My Skills</h3>
+            <ul class="skill-list">
+              <li>UI/UX Design</li>
+              <li>Graphics Design</li>
+              <li>Branding & Social Media Design</li>
+              <li>Basic Web Design</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>My Services</h2>
+          <p>Services you can customize for your portfolio.</p>
+        </div>
+        <div class="services">
+          <div class="card service"><div class="icon">◈</div><h3>UI/UX Design</h3><p>Mobile app and website interface concepts.</p></div>
+          <div class="card service"><div class="icon">✦</div><h3>Graphics Design</h3><p>Posters, thumbnails, banners and social visuals.</p></div>
+          <div class="card service"><div class="icon">⌘</div><h3>Web Design</h3><p>Responsive layouts with clean visual structure.</p></div>
+          <div class="card service"><div class="icon">▱</div><h3>Branding</h3><p>Logos, color palettes and brand identity ideas.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolio">
+      <div class="container">
+        <div class="section-title">
+          <h2>My Portfolio</h2>
+          <p>Replace these sample projects with your own work.</p>
+        </div>
+        <div class="portfolio">
+          <article class="card project">
+            <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=80" alt="Creative workspace">
+            <div class="project-content"><div class="tag">Graphics Design</div><h3>Social Media Poster</h3><p>Creative promotional visual.</p></div>
+          </article>
+          <article class="card project">
+            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=900&q=80" alt="Mobile app concept">
+            <div class="project-content"><div class="tag">UI/UX Design</div><h3>Travel App UI</h3><p>Mobile travel app concept.</p></div>
+          </article>
+          <article class="card project">
+            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=900&q=80" alt="Brand design">
+            <div class="project-content"><div class="tag">Branding</div><h3>Logo Concept</h3><p>Minimal brand identity concept.</p></div>
+          </article>
+          <article class="card project">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80" alt="Website dashboard">
+            <div class="project-content"><div class="tag">Web Design</div><h3>Portfolio Website</h3><p>Modern responsive website layout.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Let's Create Something Amazing</h2>
+          <p>Update the contact details before publishing.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="card">
+            <h3>Get In Touch</h3>
+            <p style="margin-top:12px">Email: your-email@example.com</p>
+            <p>Location: Sylhet, Bangladesh</p>
+            <p>Available for creative projects.</p>
+          </div>
+          <div class="card">
+            <form onsubmit="sendMessage(event)">
+              <input type="text" placeholder="Your Name" required />
+              <input type="email" placeholder="Your Email" required />
+              <textarea placeholder="Your Message" required></textarea>
+              <button class="btn" type="submit">Send Message →</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> G-R Mahdi. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function sendMessage(event) {
+      event.preventDefault();
+      alert("Thank you! This demo form is not connected to an email service yet.");
+    }
+  </script>
+</body>
+</html>
